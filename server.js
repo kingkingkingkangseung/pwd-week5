@@ -16,14 +16,18 @@ const app = createApp();
 
 async function start() {
   try {
-    await connectDB(MONGODB_URI, DB_NAME);
     console.log("🔍 process.env.MONGODB_URI:", process.env.MONGODB_URI ? "✅ Loaded" : "❌ Missing");
+    console.log("🟢 Trying to connect to MongoDB...");
+    await connectDB(process.env.MONGODB_URI, process.env.DB_NAME);
+    console.log("🟢 MongoDB connection attempt finished");
+
     await ensureSeededOnce();
     if (require.main === module) {
       app.listen(PORT, () => console.log(`✅ Server listening on port ${PORT}`));
     }
   } catch (err) {
-    console.error('❌ Failed to start server:', err);
+    console.error("❌ Failed to start server!");
+    console.error(err); // 🔥 여기서 에러 전체 출력
     process.exit(1);
   }
 }
