@@ -1,6 +1,8 @@
-﻿module.exports = {
+// jest.config.js
+module.exports = {
   testEnvironment: 'node',
-  collectCoverageFrom: ['src/**/*.js'],
-  coveragePathIgnorePatterns: ['node_modules', 'src/data'],
-  moduleFileExtensions: ['js', 'json'],
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
+  testTimeout: 10000, // 10초로 증가
+  coveragePathIgnorePatterns: ['/node_modules/'],
+  testMatch: ['**/tests/**/*.test.js'],
 };

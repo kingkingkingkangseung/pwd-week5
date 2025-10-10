@@ -1,8 +1,12 @@
 ﻿const restaurantService = require('../src/services/restaurants.service');
 
 describe('RestaurantService', () => {
-  afterEach(() => {
-    restaurantService.resetStore();
+  beforeEach(async () => {
+    await restaurantService.resetStore();
+  });
+  
+  afterEach(async () => {
+    // jest.setup.js 가 컬렉션 정리를 수행함
   });
 
   test('getAllRestaurants resolves with data', async () => {
