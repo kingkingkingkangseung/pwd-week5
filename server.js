@@ -14,6 +14,21 @@ if (!MONGODB_URI) {
 
 const app = createApp();
 
+const cors = require('cors');
+const express = require('express');
+const createApp = require('./src/app');
+
+const app = createApp();
+
+// ✅ CORS 허용 설정
+app.use(cors({
+  origin: [
+    'https://pwd-week3-kingkingkingkangseung.netlify.app', // Netlify 프론트엔드 주소
+  ],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true,
+}));
+
 async function start() {
   try {
     console.log("🔍 process.env.MONGODB_URI:", process.env.MONGODB_URI ? "✅ Loaded" : "❌ Missing");
