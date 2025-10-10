@@ -12,8 +12,6 @@ if (!MONGODB_URI) {
   process.exit(1);
 }
 
-const app = createApp();
-
 const cors = require('cors');
 const express = require('express');
 const createApp = require('./src/app');
