@@ -1,4 +1,3 @@
-// src/services/submissions.service.js
 const Submission = require('../models/submission.model');
 
 async function getNextSubmissionId() {
