@@ -5,8 +5,8 @@ const restaurantService = require('../src/services/restaurants.service');
 describe('Restaurant routes', () => {
   let app;
 
-  beforeEach(() => {
-    restaurantService.resetStore();
+  beforeEach(async () => {
+    await restaurantService.resetStore();
     app = createApp();
   });
 
@@ -15,6 +15,8 @@ describe('Restaurant routes', () => {
     expect(response.status).toBe(200);
     expect(response.body.data).toBeInstanceOf(Array);
   });
+
+  // removed sync-demo test; API is CRUD-only now
 
   test('GET /api/restaurants/:id returns an item', async () => {
     const response = await request(app).get('/api/restaurants/1');
