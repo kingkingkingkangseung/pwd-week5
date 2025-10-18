@@ -1,5 +1,4 @@
-﻿// src/services/restaurants.service.js
-const path = require('path');
+﻿const path = require('path');
 const { readFileSync } = require('fs');
 const Restaurant = require('../models/restaurant.model');
 

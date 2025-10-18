@@ -1,4 +1,3 @@
-﻿// src/controllers/restaurants.controller.js
 const restaurantService = require('../services/restaurants.service');
 const asyncHandler = require('../utils/asyncHandler');
 
@@ -41,6 +40,12 @@ exports.createRestaurant = asyncHandler(async (req, res) => {
     ...req.body,
     recommendedMenu: normaliseMenu(req.body?.recommendedMenu)
   };
+  const required = ['name', 'category', 'location'];
+  const missing = required.find((k) => !payload[k]);
+  if (missing) {
+    res.status(400).json({ error: { message: `'${missing}' is required` } });
+    return;
+  }
 
   const restaurant = await restaurantService.createRestaurant(payload);
   res.status(201).json({ data: restaurant });

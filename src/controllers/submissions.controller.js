@@ -1,4 +1,4 @@
-// src/controllers/submissions.controller.js
+
 const submissionsService = require('../services/submissions.service');
 const asyncHandler = require('../utils/asyncHandler');
 
